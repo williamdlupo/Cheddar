@@ -1,0 +1,3 @@
+export const STORE_USER = 'STORE_USER';
+export const GET_USERDOC = 'GET_USERDOC';
+export const GET_TRANSACTIONS = 'GET_TRANSACTIONS';

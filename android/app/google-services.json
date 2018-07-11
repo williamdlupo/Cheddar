@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "587249634736",
+    "firebase_url": "https://projectsenti-1e4f6.firebaseio.com",
+    "project_id": "projectsenti-1e4f6",
+    "storage_bucket": "projectsenti-1e4f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587249634736:android:49a45add053ade72",
+        "android_client_info": {
+          "package_name": "com.cheddar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587249634736-su2kl8nv80tbsi464od0cemnn2u0jifo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt8Yr4n3mvbdtHFYK4fLJRK2CNOqJx_VM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
