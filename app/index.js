@@ -49,8 +49,6 @@ class App extends React.Component {
           : false
         : false;
     const Layout = createRootNavigator(this.props.user, verified, hasAccounts);
-    console.log(this.props.user_doc);
-    console.log(this.state.loading);
     const Launch = <Layout />;
 
     const displayLoading = (
@@ -75,7 +73,7 @@ class App extends React.Component {
       let response = await fetch(
         "https://dhwebhookentry.azurewebsites.net/api/GetUserDocument/" +
           uid +
-          "?code=76i6Czbahm2jqVcyuLCZp6RlhaV4qCyCbv73gO/PgnNXB8ls6Trv8A==",
+          "?code=1zVI3irRXN7NVd88DX8Icg22nTgD3XJ/TyUP8NFEN8ipPW0VfFKTmA==",
         {
           method: "POST"
         }
@@ -103,7 +101,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onStoreUser: user => dispatch(storeUser(user)),
     onGetUserDoc: doc => dispatch(getUserDoc(doc)),
-    onGetTransactions: () => dispatch(getTransactions())
+    onGetTransactions: (transactions) => dispatch(getTransactions(transactions))
   };
 };
 

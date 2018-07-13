@@ -40,8 +40,6 @@ class AccountSync extends Component {
     );
     const hasAccounts = (
       <View style={styles.topContainer}>
-        {/* <Text style={styles.heading}>Synced Accounts</Text>
-        <View style={styles.line} /> */}
         <FlatList
           style={styles.Listcontainer}
           data={this.props.user_doc.items}

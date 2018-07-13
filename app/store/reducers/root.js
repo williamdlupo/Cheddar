@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
     case GET_TRANSACTIONS:
       return {
         ...state,
-        transactions: []
+        transactions: action.transactions
       };
     default:
       return state;

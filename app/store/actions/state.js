@@ -14,11 +14,9 @@ export const getUserDoc = (doc) => {
     };
 }; 
 
-export const getTransactions = (uid, startDate, endDate) => {
+export const getTransactions = (transactions) => {
     return {
         type: GET_TRANSACTIONS,
-        uid: uid,
-        startDate: startDate,
-        endDate: endDate
+        transactions: transactions
     };
 }; 

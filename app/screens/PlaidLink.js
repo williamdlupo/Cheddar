@@ -33,7 +33,7 @@ class PlaidLink extends Component {
         accounts: data.metadata.accounts
       });
       await fetch(
-        "https://dhwebhookentry.azurewebsites.net/api/AddItem?code=6XlWFIYImoirR26sBiV2sAKgtiZPW97j2v0A5NP8aTnG/BAZnVOgwA==",
+        "https://dhwebhookentry.azurewebsites.net/api/AddItem?code=KmecgKs5FLjCsmidGtoDomw976PhWkuJY6SpR2uN9eAfeMh3cgGhCg==",
         {
           method: "POST",
           headers: {
@@ -55,7 +55,7 @@ class PlaidLink extends Component {
     await fetch(
       "https://dhwebhookentry.azurewebsites.net/api/GetUserDocument/" +
         uid +
-        "?code=76i6Czbahm2jqVcyuLCZp6RlhaV4qCyCbv73gO/PgnNXB8ls6Trv8A==",
+        "?code=1zVI3irRXN7NVd88DX8Icg22nTgD3XJ/TyUP8NFEN8ipPW0VfFKTmA==",
       {
         method: "POST"
       }
@@ -84,7 +84,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onStoreUser: user => dispatch(storeUser(user)),
     onGetUserDoc: uid => dispatch(getUserDoc(uid)),
-    onGetTransactions: () => dispatch(getTransactions())
+    onGetTransactions: (transactions) => dispatch(getTransactions(transactions))
   };
 };
 
