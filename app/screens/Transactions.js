@@ -14,56 +14,20 @@ import {
 } from "../store/actions/actionBundle";
 
 import Loading from "../screens/Loading";
-import TransItem from '../components/TransItem';
+import TransItem from "../components/TransItem";
 
 class Transactions extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loading: true,
-      account_id: "",
-      start_date: '2018-07-01',
-      end_date: '2018-07-13'
-    };
-  }
-
-  componentDidMount() {
-      if (this.props.transactions == null)
-      {
-        this.getTransactions();
-      }
-  }
-
-  async getTransactions() {
-    try {
-      let response = await fetch(
-        "https://projectsenti-api.azurewebsites.net/api/GetTransactions?code=KlaWFrSVQpxw6gLhFxYimImWoZZWNnpEH5CQ1QyWl2frnfjHUdyF2w==",
-        {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              uid: this.props.user.uid,
-              account_id: this.state.account_id,
-              start_date: this.state.start_date,
-              end_date: this.state.end_date
-            })
-          }
-      );
-      let responseJson = await response.json();
-      let trans = await this.props
-        .onGetTransactions(responseJson.transactions)
-        .then(this.setState({ loading: false }));
-      return trans;
-    } catch (ex) {
-      console.log("parsing failed", ex);
-    }
-  }
-
   render() {
     const displayTransactions = (
       <View style={styles.topContainer}>
+        <View style={styles.header}>
+          <Text style={styles.heading}>All Accounts</Text>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("PlaidLink")}
+          >
+            <Text style={styles.heading}>Date Range</Text>
+          </TouchableOpacity>
+        </View>
         <FlatList
           style={styles.Listcontainer}
           data={this.props.transactions}
@@ -71,7 +35,17 @@ class Transactions extends Component {
         />
       </View>
     );
-    return <View style={styles.container}>{displayTransactions}</View>;
+    const displayLoading = (
+      <View style={styles.topContainer}>
+        <Loading loading={true} />
+      </View>
+    );
+
+    return this.props.transactions == null ? (
+      displayLoading
+    ) : (
+      <View style={styles.container}>{displayTransactions}</View>
+    );
   }
 }
 
@@ -87,7 +61,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onStoreUser: user => dispatch(storeUser(user)),
     onGetUserDoc: uid => dispatch(getUserDoc(uid)),
-    onGetTransactions: (transactions) => dispatch(getTransactions(transactions))
+    onGetTransactions: transactions => dispatch(getTransactions(transactions))
   };
 };
 
@@ -126,18 +100,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     color: "#f7b731",
-    fontSize: 30,
+    fontSize: 22,
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
+    marginBottom: 10
   },
-  inst_heading: {
-    justifyContent: "center",
+  header: {
+    backgroundColor: "black",
     flexDirection: "row",
-    color: "white",
-    fontSize: 40,
-    marginTop: 10,
-    marginLeft: 20,
-    marginRight: 20
+    justifyContent: "space-between"
   },
   button: {
     height: 50,
@@ -166,12 +137,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
     alignSelf: "center"
-  },
-  line: {
-    marginTop: 10,
-    marginRight: 10,
-    marginLeft: 10,
-    borderBottomColor: "white",
-    borderBottomWidth: 2
   }
 });

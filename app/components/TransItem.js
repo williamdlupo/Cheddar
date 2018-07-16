@@ -3,36 +3,25 @@ import { View, Text, StyleSheet, FlatList } from "react-native";
 
 const transItem = props => (
   <View style={styles.container}>
-    <Text style={styles.listItemText}>{props.item.name}</Text>
-    <View style={styles.Listcontainer}>
-      <Text style={styles.listItemText}>{props.item.date}</Text>
-      <Text style={styles.listItemTextR}>{props.item.amount}</Text>
+    <View style={styles.listItem}>
+      <Text style={styles.listItemHead}>{props.item.name}</Text>
+      {props.item.amount > 0 ? <Text style={styles.listItemTextR}>(${props.item.amount})</Text> : <Text style={styles.listItemTextR}>${props.item.amount}</Text>}
     </View>
+    <Text style={styles.listItemText}>{props.item.date}</Text>
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "black",
-    flexDirection: "column"
+    margin: 5,
+    backgroundColor: "#1e272e",
   },
   listItem: {
-    flex: 1,
-    backgroundColor: "black",
+    flex: 1,    
     flexDirection: "row",
     justifyContent: "space-between"
   },
-  institutionHeader: {
-    justifyContent: "center",
-    flexDirection: "row",
-    color: "#0fbcf9",
-    fontSize: 30,
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10
-  },
-  listItemText: {
+  listItemHead: {
     justifyContent: "flex-start",
     color: "white",
     fontSize: 20,
@@ -40,9 +29,26 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20
   },
+  listItemText: {
+    justifyContent: "flex-start",
+    color: "#0fbcf9",
+    fontSize: 16,
+    marginTop: 5,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 5,
+    fontStyle: 'italic'
+  },
+  listItemTextRP: {
+    color: "#05c46b",
+    fontSize: 18,
+    marginTop: 10,
+    marginLeft: 20,
+    marginRight: 20
+  },
   listItemTextR: {
-    color: "#f7b731",
-    fontSize: 20,
+    color: "#ff3f34",
+    fontSize: 18,
     marginTop: 10,
     marginLeft: 20,
     marginRight: 20

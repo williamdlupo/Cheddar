@@ -14,7 +14,10 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      loading: true
+      loading: true,
+      account_id: "",
+      start_date: "2018-07-01",
+      end_date: "2018-07-13"
     };
   }
 
@@ -24,6 +27,7 @@ class App extends React.Component {
 
       if (user) {
         this.getUserDocument(user.uid);
+        this.getTransactions();
       }
     });
   }
@@ -81,8 +85,35 @@ class App extends React.Component {
       let responseJson = await response.json();
       let test = await this.props
         .onGetUserDoc(responseJson[0])
-        .then(this.setState({ loading: false }));
+        // .then(this.setState({ loading: false }));
       return test;
+    } catch (ex) {
+      console.log("parsing failed", ex);
+    }
+  }
+
+  async getTransactions() {
+    try {
+      let response = await fetch(
+        "https://projectsenti-api.azurewebsites.net/api/GetTransactions?code=KlaWFrSVQpxw6gLhFxYimImWoZZWNnpEH5CQ1QyWl2frnfjHUdyF2w==",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            uid: this.props.user.uid,
+            account_id: this.state.account_id,
+            start_date: this.state.start_date,
+            end_date: this.state.end_date
+          })
+        }
+      );
+      let responseJson = await response.json();
+      let trans = await this.props
+        .onGetTransactions(responseJson.transactions)
+        .then(this.setState({ loading: false }));
+      return trans;
     } catch (ex) {
       console.log("parsing failed", ex);
     }
@@ -101,7 +132,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onStoreUser: user => dispatch(storeUser(user)),
     onGetUserDoc: doc => dispatch(getUserDoc(doc)),
-    onGetTransactions: (transactions) => dispatch(getTransactions(transactions))
+    onGetTransactions: transactions => dispatch(getTransactions(transactions))
   };
 };
 

@@ -24,13 +24,13 @@ class AccountSync extends Component {
 
         <View style={styles.bottom}>
           <TouchableOpacity
-            style={styles.registerButton}
+            style={styles.syncButton}
             onPress={() => this.props.navigation.navigate("PlaidLink")}
           >
             <Text style={styles.btnText}>Sync An Account</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.loginButton}
+            style={styles.signOutbutton}
             onPress={this.Logout.bind(this)}
           >
             <Text style={styles.btnText}>Sign Out</Text>
@@ -117,8 +117,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end"
   },
   heading: {
-    justifyContent: "center",
+    justifyContent: "flex-end",
     flexDirection: "row",
+    alignSelf: 'stretch',
     color: "#f7b731",
     fontSize: 30,
     marginLeft: 10,
@@ -133,12 +134,13 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20
   },
-  button: {
+  signOutbutton: {
     height: 50,
+    backgroundColor: "#4b6584",
     alignSelf: "stretch",
-    marginTop: 10,
     justifyContent: "center",
-    backgroundColor: "#4b6584"
+    marginLeft: 20,
+    marginRight: 20
   },
   syncButton: {
     height: 50,

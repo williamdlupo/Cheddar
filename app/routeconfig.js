@@ -32,12 +32,14 @@ export const HomeTabs = createBottomTabNavigator(
   {
     Transactions: {
       screen: Transactions,
+      title: "Spending",
       navigationOptions: {
         tabBarLabel: "Spending"
       }
     },
     Dashboard: {
       screen: Dashboard,
+      title: "Cheddar!",
       navigationOptions: {
         tabBarLabel: "Dashboard"
       }
@@ -80,11 +82,6 @@ export const AuthenticatedStack = createStackNavigator(
       screen: AccountSync,
       navigationOptions: {
         title: "Synced Accounts",
-        headerTitleStyle: {
-          alignSelf: 'center',
-          textAlign: 'center',
-          fontSize: 25,
-        },
         headerStyle: {
           backgroundColor: "black"
         },
@@ -103,8 +100,8 @@ export const AuthenticatedStack = createStackNavigator(
     Home: {
       screen: HomeTabs,
       navigationOptions: {
-        headerVisible: false,
-        headerStyle
+        headerStyle,
+        headerTintColor: "#f7b731"
       }
     }
   },
