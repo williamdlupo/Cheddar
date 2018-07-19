@@ -15,9 +15,6 @@ class App extends React.Component {
     super();
     this.state = {
       loading: true,
-      account_id: "",
-      start_date: "2018-07-01",
-      end_date: "2018-07-13"
     };
   }
 
@@ -103,16 +100,16 @@ class App extends React.Component {
           },
           body: JSON.stringify({
             uid: this.props.user.uid,
-            account_id: this.state.account_id,
-            start_date: this.state.start_date,
-            end_date: this.state.end_date
+            account_id: this.props.account_id,
+            start_date: this.props.start_date,
+            end_date: this.props.end_date
           })
         }
       );
       let responseJson = await response.json();
       let trans = await this.props
         .onGetTransactions(responseJson.transactions)
-        .then(this.setState({ loading: false }));
+        this.setState({ loading: false });
       return trans;
     } catch (ex) {
       console.log("parsing failed", ex);
@@ -124,7 +121,10 @@ const mapStateToProps = state => {
   return {
     user: state.reducer.user,
     user_doc: state.reducer.user_doc,
-    transactions: state.reducer.transactions
+    transactions: state.reducer.transactions,
+    account_id: state.reducer.account_id,
+    start_date: state.reducer.start_date,
+    end_date: state.reducer.end_date
   };
 };
 

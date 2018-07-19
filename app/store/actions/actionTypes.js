@@ -1,3 +1,6 @@
 export const STORE_USER = 'STORE_USER';
 export const GET_USERDOC = 'GET_USERDOC';
 export const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
+export const STORE_ACCOUNT = 'STORE_ACCOUNT';
+export const STORE_SDATE = 'STORE_SDATE';
+export const STORE_EDATE = 'STORE_EDATE';

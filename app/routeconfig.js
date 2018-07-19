@@ -1,10 +1,10 @@
-import { Platform, StatusBar } from "react-native";
+import React from "react";
 import {
   createStackNavigator,
   createBottomTabNavigator,
   createSwitchNavigator
 } from "react-navigation";
-import { Provider } from "react-redux";
+import FontAwesome, { Icons } from "react-native-fontawesome";
 
 import SignIn from "./screens/SignIn";
 import VerifyEmail from "./screens/VerifyEmail";
@@ -34,33 +34,47 @@ export const HomeTabs = createBottomTabNavigator(
       screen: Transactions,
       title: "Spending",
       navigationOptions: {
-        tabBarLabel: "Spending"
+        tabBarLabel: "Spending",
+        tabBarIcon: ({ tintColor }) => <FontAwesome style={{color:tintColor, fontSize: 24}} >{Icons.dollar}</FontAwesome>
       }
     },
     Dashboard: {
       screen: Dashboard,
       title: "Cheddar!",
       navigationOptions: {
-        tabBarLabel: "Dashboard"
+        tabBarLabel: "Home",
+        tabBarIcon: ({ tintColor, }) => <FontAwesome style={{color:tintColor, fontSize: 24}} >{Icons.home}</FontAwesome>
       }
     },
     Profile: {
       screen: Profile,
       navigationOptions: {
-        tabBarLabel: "Profile"
+        tabBarLabel: "Profile",
+        tabBarIcon: ({ tintColor }) => <FontAwesome style={{color:tintColor, fontSize: 24}} >{Icons.userCircle}</FontAwesome>
       }
     }
   },
   {
     initialRouteName: "Dashboard",
     tabBarOptions: {
-      activeTintColor: "white",
+      showIcon: true,
+      showLabel: true,
+      animationEnabled: true,
+      activeTintColor: "#f7b731",
+      iconStyle: {
+        fontSize: 20
+      },
       labelStyle: {
         fontSize: 18
       },
+      tabStyle: {
+        width: 100
+      },
+      activeTabStyle: {
+        backgroundColor: "black",
+      },
       style: {
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        backgroundColor: "black"
+        backgroundColor: "black",
       }
     }
   }
@@ -101,7 +115,7 @@ export const AuthenticatedStack = createStackNavigator(
       screen: HomeTabs,
       navigationOptions: {
         headerStyle,
-        headerTintColor: "#f7b731"
+        headerVisible: false
       }
     }
   },

@@ -4,8 +4,8 @@ import { View, Text, StyleSheet, FlatList } from "react-native";
 const transItem = props => (
   <View style={styles.container}>
     <View style={styles.listItem}>
-      <Text style={styles.listItemHead}>{props.item.name}</Text>
-      {props.item.amount > 0 ? <Text style={styles.listItemTextR}>(${props.item.amount})</Text> : <Text style={styles.listItemTextR}>${props.item.amount}</Text>}
+      {props.item.name.length < 20 ?  <Text style={styles.listItemHead}>{props.item.name}</Text> : <Text style={styles.listItemHead}>{props.item.name.substring(0, 20)}...</Text>}
+      {props.item.amount > 0 ? <Text style={styles.listItemTextR}>(${props.item.amount})</Text> : <Text style={styles.listItemTextRP}>${props.item.amount*(-1)}</Text>}
     </View>
     <Text style={styles.listItemText}>{props.item.date}</Text>
   </View>

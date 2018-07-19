@@ -18,10 +18,11 @@ import TransItem from "../components/TransItem";
 
 class Transactions extends Component {
   render() {
+    const Acct = (this.props.account_id == "" ? <Text style={styles.heading}>All Accounts</Text> : <Text style={styles.heading}>{this.props.account_id}</Text>);
     const displayTransactions = (
       <View style={styles.topContainer}>
         <View style={styles.header}>
-          <Text style={styles.heading}>All Accounts</Text>
+          <Text style={styles.heading}>{Acct}</Text>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("PlaidLink")}
           >
@@ -35,6 +36,19 @@ class Transactions extends Component {
         />
       </View>
     );
+    const noTransactions = (
+      <View style={styles.topContainer}>
+        <View style={styles.header}>
+          <Text style={styles.heading}>All Accounts</Text>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("PlaidLink")}
+          >
+            <Text style={styles.heading}>Date Range</Text>
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.text}>No Transactions For This Timeframe!</Text>
+      </View>
+    );
     const displayLoading = (
       <View style={styles.topContainer}>
         <Loading loading={true} />
@@ -43,8 +57,10 @@ class Transactions extends Component {
 
     return this.props.transactions == null ? (
       displayLoading
-    ) : (
+    ) : this.props.transactions.length > 0 ? (
       <View style={styles.container}>{displayTransactions}</View>
+    ) : (
+      <View style={styles.container}>{noTransactions}</View>
     );
   }
 }
@@ -53,7 +69,10 @@ const mapStateToProps = state => {
   return {
     user: state.reducer.user,
     user_doc: state.reducer.user_doc,
-    transactions: state.reducer.transactions
+    transactions: state.reducer.transactions,
+    account_id: state.reducer.account_id,
+    start_date: state.reducer.start_date,
+    end_date: state.reducer.end_date
   };
 };
 
@@ -129,8 +148,8 @@ const styles = StyleSheet.create({
   },
   text: {
     margin: 10,
-    fontSize: 15,
-    color: "white",
+    fontSize: 18,
+    color: "#808e9b",
     alignSelf: "center"
   },
   btnText: {

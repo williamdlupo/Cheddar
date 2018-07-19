@@ -17,7 +17,7 @@ class PlaidLink extends Component {
         publicKey="f326b59ea06cf5309ebd2861388d13"
         env="sandbox"
         product="transactions"
-        webhook="https://dhwebhookentry.azurewebsites.net/api/PlaidWebHook?code=t6wJsM/S4m1Sg1H4SutHgArWcPSNSSTEqu6rbSWiaY6rCPSLDynamw=="
+        webhook="https://projectsenti-webhook.azurewebsites.net/api/Webhook-Entry?code=KSD9Xbpl7CQ7ys6L02AUkYEf6He1Y8stca5CaP/A9oEY3oUQlAOIMw=="
       />
     );
   }
@@ -32,6 +32,7 @@ class PlaidLink extends Component {
         institution_name: data.metadata.institution.name,
         accounts: data.metadata.accounts
       });
+      console.log(obj);
       await fetch(
         "https://dhwebhookentry.azurewebsites.net/api/AddItem?code=KmecgKs5FLjCsmidGtoDomw976PhWkuJY6SpR2uN9eAfeMh3cgGhCg==",
         {
@@ -52,23 +53,22 @@ class PlaidLink extends Component {
     }
   };
   async getUserDocument(uid) {
-    await fetch(
-      "https://dhwebhookentry.azurewebsites.net/api/GetUserDocument/" +
-        uid +
-        "?code=1zVI3irRXN7NVd88DX8Icg22nTgD3XJ/TyUP8NFEN8ipPW0VfFKTmA==",
-      {
-        method: "POST"
-      }
-    )
-      .then(response => {
-        return response.json();
-      })
-      .then(json => {
-        this.props.onGetUserDoc(json[0]);
-      })
-      .catch(ex => {
-        console.log("parsing failed", ex);
-      });
+    try {
+      let response = await fetch(
+        "https://dhwebhookentry.azurewebsites.net/api/GetUserDocument/" +
+          uid +
+          "?code=1zVI3irRXN7NVd88DX8Icg22nTgD3XJ/TyUP8NFEN8ipPW0VfFKTmA==",
+        {
+          method: "POST"
+        }
+      );
+      let responseJson = await response.json();
+      let test = await this.props
+        .onGetUserDoc(responseJson[0])
+      return test;
+    } catch (ex) {
+      console.log("parsing failed", ex);
+    }
   }
 }
 
