@@ -94,7 +94,7 @@ class App extends React.Component {
       let response = await fetch(
         "https://projectsenti-api.azurewebsites.net/api/GetTransactions?code=KlaWFrSVQpxw6gLhFxYimImWoZZWNnpEH5CQ1QyWl2frnfjHUdyF2w==",
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json"
           },

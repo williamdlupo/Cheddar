@@ -17,7 +17,7 @@ class PlaidLink extends Component {
         publicKey="f326b59ea06cf5309ebd2861388d13"
         env="sandbox"
         product="transactions"
-        webhook="https://projectsenti-webhook.azurewebsites.net/api/Webhook-Entry?code=KSD9Xbpl7CQ7ys6L02AUkYEf6He1Y8stca5CaP/A9oEY3oUQlAOIMw=="
+        webhook="https://projectsenti-webhook.azurewebsites.net/api/Webhook-Entry?code=jlrNiEIUt2IU8OyrDN060WVINIDhQcRDRLCIeky5Ol9Ro9WSMqf4fQ=="
       />
     );
   }

@@ -13,6 +13,7 @@ import PlaidLink from "./screens/PlaidLink";
 import Dashboard from "./screens/Dashboard";
 import Transactions from "./screens/Transactions";
 import Profile from "./screens/Profile";
+import DateSelect from "./screens/DateSelect";
 
 const headerStyle = {
   backgroundColor: "black"
@@ -35,7 +36,11 @@ export const HomeTabs = createBottomTabNavigator(
       title: "Spending",
       navigationOptions: {
         tabBarLabel: "Spending",
-        tabBarIcon: ({ tintColor }) => <FontAwesome style={{color:tintColor, fontSize: 24}} >{Icons.dollar}</FontAwesome>
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome style={{ color: tintColor, fontSize: 24 }}>
+            {Icons.dollar}
+          </FontAwesome>
+        )
       }
     },
     Dashboard: {
@@ -43,14 +48,22 @@ export const HomeTabs = createBottomTabNavigator(
       title: "Cheddar!",
       navigationOptions: {
         tabBarLabel: "Home",
-        tabBarIcon: ({ tintColor, }) => <FontAwesome style={{color:tintColor, fontSize: 24}} >{Icons.home}</FontAwesome>
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome style={{ color: tintColor, fontSize: 24 }}>
+            {Icons.home}
+          </FontAwesome>
+        )
       }
     },
     Profile: {
       screen: Profile,
       navigationOptions: {
         tabBarLabel: "Profile",
-        tabBarIcon: ({ tintColor }) => <FontAwesome style={{color:tintColor, fontSize: 24}} >{Icons.userCircle}</FontAwesome>
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome style={{ color: tintColor, fontSize: 24 }}>
+            {Icons.userCircle}
+          </FontAwesome>
+        )
       }
     }
   },
@@ -71,10 +84,10 @@ export const HomeTabs = createBottomTabNavigator(
         width: 100
       },
       activeTabStyle: {
-        backgroundColor: "black",
+        backgroundColor: "black"
       },
       style: {
-        backgroundColor: "black",
+        backgroundColor: "black"
       }
     }
   }
@@ -116,6 +129,16 @@ export const AuthenticatedStack = createStackNavigator(
       navigationOptions: {
         headerStyle,
         headerVisible: false
+      }
+    },
+    DateSelect: {
+      screen: DateSelect,      
+      navigationOptions: {
+        title: "Date Select",
+        headerStyle: {
+          backgroundColor: "black"
+        },
+        headerTintColor: "#f7b731"
       }
     }
   },

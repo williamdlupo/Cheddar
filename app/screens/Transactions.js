@@ -24,7 +24,7 @@ class Transactions extends Component {
         <View style={styles.header}>
           <Text style={styles.heading}>{Acct}</Text>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("PlaidLink")}
+            onPress={() => this.props.navigation.navigate("DateSelect")}
           >
             <Text style={styles.heading}>Date Range</Text>
           </TouchableOpacity>
@@ -41,7 +41,7 @@ class Transactions extends Component {
         <View style={styles.header}>
           <Text style={styles.heading}>All Accounts</Text>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("PlaidLink")}
+            onPress={() => this.props.navigation.navigate("DateSelect")}
           >
             <Text style={styles.heading}>Date Range</Text>
           </TouchableOpacity>
