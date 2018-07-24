@@ -14,6 +14,7 @@ import Dashboard from "./screens/Dashboard";
 import Transactions from "./screens/Transactions";
 import Profile from "./screens/Profile";
 import DateSelect from "./screens/DateSelect";
+import Calendar from "./components/CalendarList";
 
 const headerStyle = {
   backgroundColor: "black"
@@ -87,7 +88,7 @@ export const HomeTabs = createBottomTabNavigator(
         backgroundColor: "black"
       },
       style: {
-        backgroundColor: "black"
+        backgroundColor: "black",
       }
     }
   }
@@ -132,9 +133,18 @@ export const AuthenticatedStack = createStackNavigator(
       }
     },
     DateSelect: {
-      screen: DateSelect,      
+      screen: DateSelect,
       navigationOptions: {
         title: "Date Select",
+        headerStyle: {
+          backgroundColor: "black"
+        },
+        headerTintColor: "#f7b731"
+      }
+    },
+    Calendar: {
+      screen: Calendar,
+      navigationOptions: {
         headerStyle: {
           backgroundColor: "black"
         },

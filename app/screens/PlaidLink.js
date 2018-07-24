@@ -16,8 +16,8 @@ class PlaidLink extends Component {
         onMessage={this.onMessage}
         publicKey="f326b59ea06cf5309ebd2861388d13"
         env="sandbox"
-        product="transactions"
-        webhook="https://projectsenti-webhook.azurewebsites.net/api/Webhook-Entry?code=jlrNiEIUt2IU8OyrDN060WVINIDhQcRDRLCIeky5Ol9Ro9WSMqf4fQ=="
+        product="transactions" 
+        webhook="https://projectsenti-webhook.azurewebsites.net/api/Webhook-Entry/entry/?code=jlrNiEIUt2IU8OyrDN060WVINIDhQcRDRLCIeky5Ol9Ro9WSMqf4fQ=="
       />
     );
   }

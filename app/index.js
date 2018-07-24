@@ -82,7 +82,6 @@ class App extends React.Component {
       let responseJson = await response.json();
       let test = await this.props
         .onGetUserDoc(responseJson[0])
-        // .then(this.setState({ loading: false }));
       return test;
     } catch (ex) {
       console.log("parsing failed", ex);
@@ -92,9 +91,9 @@ class App extends React.Component {
   async getTransactions() {
     try {
       let response = await fetch(
-        "https://projectsenti-api.azurewebsites.net/api/GetTransactions?code=KlaWFrSVQpxw6gLhFxYimImWoZZWNnpEH5CQ1QyWl2frnfjHUdyF2w==",
+        "https://projectsenti-api.azurewebsites.net/api/GetTransactions/trans/?code=KlaWFrSVQpxw6gLhFxYimImWoZZWNnpEH5CQ1QyWl2frnfjHUdyF2w==",
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             "Content-Type": "application/json"
           },

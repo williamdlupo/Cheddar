@@ -14,7 +14,9 @@ const RNRedux = () => (
 
 YellowBox.ignoreWarnings([
   "Warning: isMounted(...) is deprecated",
-  "Module RCTImageLoader"
+  "Module RCTImageLoader",
+  "Warning: Can't call setState",
+  "VirtualizedList: missing "
 ]);
 
 AppRegistry.registerComponent("Cheddar", () => RNRedux);

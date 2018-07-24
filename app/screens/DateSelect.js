@@ -31,7 +31,9 @@ class DateSelect extends Component {
           </View>
           <View style={styles.listItem}>
             <Text style={styles.listItemHead}>From:</Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Calendar", {key: "start"})}
+            >
               <Text style={styles.listItemTextR}>
                 {" "}
                 {this.props.start_date}{" "}
@@ -41,7 +43,9 @@ class DateSelect extends Component {
           </View>
           <View style={styles.listItem}>
             <Text style={styles.listItemHead}>To:</Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Calendar", {key: "end"})}
+            >
               <Text style={styles.listItemTextR}>
                 {" "}
                 {this.props.end_date}{" "}
