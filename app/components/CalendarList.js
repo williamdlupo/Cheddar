@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import {
+  StyleSheet,
+  Text,
+} from "react-native";
 
 import { connect } from "react-redux";
 import {
@@ -16,6 +20,16 @@ class Calendar extends Component {
       end_date: null
     };
   }
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight:
+        navigation.getParam("key") == "start" ? (
+          <Text style={styles.Topheading}>Start Date</Text>
+        ) : (
+          <Text style={styles.Topheading}>End Date</Text>
+        )
+    };
+  };
 
   render() {
     const itemId = this.props.navigation.getParam("key");
@@ -74,9 +88,10 @@ class Calendar extends Component {
       );
       let responseJson = await response.json();
       let trans = await this.props.onGetTransactions(responseJson.transactions);
-      let dates = itemId == "start"
-        ? this.props.onStoreSDate(day.dateString)
-        : this.props.onStoreEDate(day.dateString);
+      let dates =
+        itemId == "start"
+          ? this.props.onStoreSDate(day.dateString)
+          : this.props.onStoreEDate(day.dateString);
       this.setState({ selected_date: day.dateString });
       return dates;
     } catch (ex) {
@@ -108,3 +123,14 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Calendar);
+
+const styles = StyleSheet.create({
+  Topheading: {
+    justifyContent: "center",
+    flexDirection: "row",
+    color: "#f7b731",
+    fontSize: 20,
+    marginLeft: 10,
+    marginRight: 10
+  }
+});

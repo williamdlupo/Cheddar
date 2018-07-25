@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList
 } from "react-native";
+
 import { connect } from "react-redux";
 import {
   storeUser,
@@ -15,8 +16,19 @@ import {
 
 import Loading from "../screens/Loading";
 import TransItem from "../components/TransItem";
+import moment from "moment";
 
 class Transactions extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: (
+        <TouchableOpacity onPress={() => navigation.navigate("DateSelect")}>
+          <Text style={styles.Topheading}>Select Dates</Text>
+        </TouchableOpacity>
+      )
+    };
+  };
+
   render() {
     const Acct =
       this.props.account_id == "" ? (
@@ -27,12 +39,9 @@ class Transactions extends Component {
     const displayTransactions = (
       <View style={styles.topContainer}>
         <View style={styles.header}>
-          <Text style={styles.heading}>{Acct}</Text>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("DateSelect")}
-          >
-            <Text style={styles.heading}>Date Range</Text>
-          </TouchableOpacity>
+          <Text style={styles.heading}>
+          {moment(this.props.start_date).format("MMM Do [']YY")} - {moment(this.props.end_date).format("MMM Do [']YY")}
+          </Text>
         </View>
         <FlatList
           style={styles.Listcontainer}
@@ -44,12 +53,9 @@ class Transactions extends Component {
     const noTransactions = (
       <View style={styles.topContainer}>
         <View style={styles.header}>
-          <Text style={styles.heading}>All Accounts</Text>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("DateSelect")}
-          >
-            <Text style={styles.heading}>Date Range</Text>
-          </TouchableOpacity>
+          <Text style={styles.heading}>
+            {moment(this.props.start_date).format("MMM Do [']YY")}-{moment(this.props.end_date).format("MMM Do [']YY")}
+          </Text>
         </View>
         <Text style={styles.text}>No Transactions For This Timeframe!</Text>
       </View>
@@ -120,11 +126,19 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     justifyContent: "flex-end"
   },
+  Topheading: {
+    justifyContent: "center",
+    flexDirection: "row",
+    color: "#f7b731",
+    fontSize: 20,
+    marginLeft: 10,
+    marginRight: 10,
+  },
   heading: {
     justifyContent: "center",
     flexDirection: "row",
     color: "#f7b731",
-    fontSize: 22,
+    fontSize: 18,
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10

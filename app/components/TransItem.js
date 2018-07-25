@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   listItemHead: {
     justifyContent: "flex-start",
-    color: "white",
+    color: "#d2dae2",
     fontSize: 20,
     marginTop: 10,
     marginLeft: 20,
@@ -40,14 +40,16 @@ const styles = StyleSheet.create({
     fontStyle: 'italic'
   },
   listItemTextRP: {
-    color: "#05c46b",
+    color: '#d2dae2',
+    // color: "#05c46b",
     fontSize: 18,
     marginTop: 10,
     marginLeft: 20,
     marginRight: 20
   },
   listItemTextR: {
-    color: "#ff3f34",
+    color: '#d2dae2',
+    // color: "#ff3f34",
     fontSize: 18,
     marginTop: 10,
     marginLeft: 20,

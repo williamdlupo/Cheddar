@@ -6,7 +6,6 @@ import {
     View,
     TouchableOpacity
 } from 'react-native';
-import { createRootNavigator } from "../routeconfig";
 
 export default class Dashboard extends Component {
     constructor(props) {

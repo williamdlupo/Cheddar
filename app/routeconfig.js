@@ -9,12 +9,10 @@ import FontAwesome, { Icons } from "react-native-fontawesome";
 import SignIn from "./screens/SignIn";
 import VerifyEmail from "./screens/VerifyEmail";
 import AccountSync from "./screens/AccountSync";
-import PlaidLink from "./screens/PlaidLink";
-import Dashboard from "./screens/Dashboard";
-import Transactions from "./screens/Transactions";
-import Profile from "./screens/Profile";
-import DateSelect from "./screens/DateSelect";
-import Calendar from "./components/CalendarList";
+
+import HomeStack from './stackNavigators/HomeStack';
+import TransactionsStack from './stackNavigators/TransactionStack';
+import ProfileStack from './stackNavigators/ProfileStack';
 
 const headerStyle = {
   backgroundColor: "black"
@@ -30,11 +28,10 @@ export const SignedOut = createStackNavigator({
   }
 });
 
-export const HomeTabs = createBottomTabNavigator(
+export const AuthenticatedStack = createBottomTabNavigator(
   {
     Transactions: {
-      screen: Transactions,
-      title: "Spending",
+      screen: TransactionsStack,
       navigationOptions: {
         tabBarLabel: "Spending",
         tabBarIcon: ({ tintColor }) => (
@@ -45,8 +42,7 @@ export const HomeTabs = createBottomTabNavigator(
       }
     },
     Dashboard: {
-      screen: Dashboard,
-      title: "Cheddar!",
+      screen: HomeStack,
       navigationOptions: {
         tabBarLabel: "Home",
         tabBarIcon: ({ tintColor }) => (
@@ -57,7 +53,7 @@ export const HomeTabs = createBottomTabNavigator(
       }
     },
     Profile: {
-      screen: Profile,
+      screen: ProfileStack,
       navigationOptions: {
         tabBarLabel: "Profile",
         tabBarIcon: ({ tintColor }) => (
@@ -69,7 +65,7 @@ export const HomeTabs = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName: "Dashboard",
+    // initialRouteName: "Dashboard",
     tabBarOptions: {
       showIcon: true,
       showLabel: true,
@@ -79,7 +75,7 @@ export const HomeTabs = createBottomTabNavigator(
         fontSize: 20
       },
       labelStyle: {
-        fontSize: 18
+        fontSize: 17
       },
       tabStyle: {
         width: 100
@@ -88,7 +84,7 @@ export const HomeTabs = createBottomTabNavigator(
         backgroundColor: "black"
       },
       style: {
-        backgroundColor: "black",
+        backgroundColor: "black"
       }
     }
   }
@@ -102,60 +98,7 @@ export const Verify = createStackNavigator({
       headerStyle
     }
   }
-});
-
-export const AuthenticatedStack = createStackNavigator(
-  {
-    Accounts: {
-      screen: AccountSync,
-      navigationOptions: {
-        title: "Synced Accounts",
-        headerStyle: {
-          backgroundColor: "black"
-        },
-        headerTintColor: "#f7b731"
-      }
-    },
-    PlaidLink: {
-      screen: PlaidLink,
-      navigationOptions: {
-        headerStyle: {
-          backgroundColor: "black"
-        },
-        headerTintColor: "#f7b731"
-      }
-    },
-    Home: {
-      screen: HomeTabs,
-      navigationOptions: {
-        headerStyle,
-        headerVisible: false
-      }
-    },
-    DateSelect: {
-      screen: DateSelect,
-      navigationOptions: {
-        title: "Date Select",
-        headerStyle: {
-          backgroundColor: "black"
-        },
-        headerTintColor: "#f7b731"
-      }
-    },
-    Calendar: {
-      screen: Calendar,
-      navigationOptions: {
-        headerStyle: {
-          backgroundColor: "black"
-        },
-        headerTintColor: "#f7b731"
-      }
-    }
-  },
-  {
-    initialRouteName: "Home"
-  }
-);
+})
 
 export const createRootNavigator = (
   signedIn = false,
