@@ -9,8 +9,13 @@ export default (TransactionsStack = createStackNavigator(
     Transactions: {
       screen: Transactions,
       navigationOptions: {
+        title: "Spending",
+        headerTitleStyle: {
+          flex: 1,
+          fontSize: 25
+        },  
         headerStyle: {
-          backgroundColor: "black",
+          backgroundColor: "black"
         },
         headerTintColor: "#f7b731"
       }
@@ -19,6 +24,10 @@ export default (TransactionsStack = createStackNavigator(
       screen: DateSelect,
       navigationOptions: {
         title: "Date Select",
+        headerTitleStyle: {
+          textAlign: "center",
+          flex: 1
+        },
         headerStyle: {
           backgroundColor: "black"
         },
@@ -38,4 +47,4 @@ export default (TransactionsStack = createStackNavigator(
   {
     initialRouteName: "Transactions"
   }
-)); 
+));

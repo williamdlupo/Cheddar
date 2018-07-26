@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, } from "react-native";
+import moment from 'moment';
 
 const transItem = props => (
   <View style={styles.container}>
@@ -7,7 +8,7 @@ const transItem = props => (
       {props.item.name.length < 20 ?  <Text style={styles.listItemHead}>{props.item.name}</Text> : <Text style={styles.listItemHead}>{props.item.name.substring(0, 20)}...</Text>}
       {props.item.amount > 0 ? <Text style={styles.listItemTextR}>(${props.item.amount})</Text> : <Text style={styles.listItemTextRP}>${props.item.amount*(-1)}</Text>}
     </View>
-    <Text style={styles.listItemText}>{props.item.date}</Text>
+    <Text style={styles.listItemText}>{moment(props.item.date).format("MM/DD/YY")}</Text>
   </View>
 );
 

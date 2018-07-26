@@ -7,6 +7,12 @@ export default (HomeStack = createStackNavigator(
     Home: {
       screen: Dashboard,
       navigationOptions: {
+        title: "Cheddar",
+        headerTitleStyle: {
+          textAlign: "center",
+          flex: 1,
+          fontSize: 25
+        },  
         headerStyle: {
           backgroundColor: "black"
         },

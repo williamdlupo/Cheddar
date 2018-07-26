@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import FontAwesome, { Icons } from "react-native-fontawesome";
+import moment from 'moment';
 
 import { connect } from "react-redux";
 import {
@@ -36,7 +37,7 @@ class DateSelect extends Component {
             >
               <Text style={styles.listItemTextR}>
                 {" "}
-                {this.props.start_date}{" "}
+                {moment(this.props.start_date).format("MMM Do [']YY")}{" "}
                 <FontAwesome>{Icons.calendar}</FontAwesome>
               </Text>
             </TouchableOpacity>
@@ -48,7 +49,7 @@ class DateSelect extends Component {
             >
               <Text style={styles.listItemTextR}>
                 {" "}
-                {this.props.end_date}{" "}
+                {moment(this.props.end_date).format("MMM Do [']YY")}{" "}
                 <FontAwesome>{Icons.calendar}</FontAwesome>
               </Text>
             </TouchableOpacity>

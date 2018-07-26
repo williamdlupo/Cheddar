@@ -33,9 +33,8 @@ export const AuthenticatedStack = createBottomTabNavigator(
     Transactions: {
       screen: TransactionsStack,
       navigationOptions: {
-        tabBarLabel: "Spending",
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome style={{ color: tintColor, fontSize: 24 }}>
+          <FontAwesome style={{ color: tintColor, fontSize: 30 }}>
             {Icons.dollar}
           </FontAwesome>
         )
@@ -44,10 +43,9 @@ export const AuthenticatedStack = createBottomTabNavigator(
     Dashboard: {
       screen: HomeStack,
       navigationOptions: {
-        tabBarLabel: "Home",
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome style={{ color: tintColor, fontSize: 24 }}>
-            {Icons.home}
+          <FontAwesome style={{ color: tintColor, fontSize: 30 }}>
+            {Icons.barChartO}
           </FontAwesome>
         )
       }
@@ -55,9 +53,8 @@ export const AuthenticatedStack = createBottomTabNavigator(
     Profile: {
       screen: ProfileStack,
       navigationOptions: {
-        tabBarLabel: "Profile",
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome style={{ color: tintColor, fontSize: 24 }}>
+          <FontAwesome style={{ color: tintColor, fontSize: 30 }}>
             {Icons.userCircle}
           </FontAwesome>
         )
@@ -65,10 +62,10 @@ export const AuthenticatedStack = createBottomTabNavigator(
     }
   },
   {
-    // initialRouteName: "Dashboard",
+    initialRouteName: "Dashboard",
     tabBarOptions: {
       showIcon: true,
-      showLabel: true,
+      showLabel: false,
       animationEnabled: true,
       activeTintColor: "#f7b731",
       iconStyle: {
@@ -84,7 +81,9 @@ export const AuthenticatedStack = createBottomTabNavigator(
         backgroundColor: "black"
       },
       style: {
-        backgroundColor: "black"
+        backgroundColor: "black",
+        borderTopColor: '#d2dae2',
+        borderTopWidth: 1
       }
     }
   }

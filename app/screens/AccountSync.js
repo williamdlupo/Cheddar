@@ -46,7 +46,7 @@ class AccountSync extends Component {
           renderItem={info => <ListItem item={info.item} />}
         />
         
-        <View style={styles.bottomCOntainer}>
+        <View style={styles.bottomContainer}>
           <TouchableOpacity
             style={styles.syncButton}
             onPress={() => this.props.navigation.navigate("PlaidLink")}
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     justifyContent: "flex-end"
   },
-  bottomCOntainer: {
+  bottomContainer: {
     backgroundColor: "black",
     justifyContent: "flex-end"
   },
