@@ -23,13 +23,12 @@ class App extends React.Component {
       this.props.onStoreUser(user);
 
       if (user) {
-        this.getUserDocument(user.uid);
-        this.getTransactions();
+        Promise.all(this.getUserDocument(user.uid), this.getTransactions());
       }
     });
   }
 
-  componentWillUnmount() {
+  componentWillUnmount() {  
     this.authSubscription();
   }
 

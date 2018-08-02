@@ -17,6 +17,11 @@ import {
 import ListItem from "../components/ListItem";
 
 class AccountSync extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: (<View/>)
+    };
+  };
   render() {
     const noAccounts = (
       <View style={styles.topContainer}>
@@ -118,7 +123,6 @@ const styles = StyleSheet.create({
   },
   heading: {
     justifyContent: "flex-end",
-    flexDirection: "row",
     alignSelf: 'stretch',
     color: "#f7b731",
     fontSize: 30,

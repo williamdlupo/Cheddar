@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import firebase from "react-native-firebase";
 import {
-  AppRegistry,
-  Platform,
   StyleSheet,
   Text,
   View,
@@ -10,10 +8,11 @@ import {
   TouchableOpacity,
   ActivityIndicator
 } from "react-native";
+import FontAwesome, { Icons } from "react-native-fontawesome";
 
 export default class SigninIn extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       showProgress: false
     };
@@ -25,42 +24,48 @@ export default class SigninIn extends Component {
     }
     return (
       <View style={styles.container}>
-        <View style={styles.heading}>
-          <Text style={{ color: "#f7b731", fontSize: 30 }}>Cheddar</Text>
-          <Text style={{ color: "white", fontSize: 30 }}>Stack</Text>
+        <View style={styles.topContainer}>
+          <View style={styles.heading}>
+            <Text style={{ color: "#f7b731", fontSize: 30 }}>Cheddar</Text>
+            <Text style={{ color: "white", fontSize: 30 }}>Stack</Text>
+          </View>
+          {errorCtrl}
+          <TextInput
+            onChangeText={text => this.setState({ email: text })}
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor="grey"
+          />
+          <TextInput
+            onChangeText={text => this.setState({ password: text })}
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry={true}
+            p
+            placeholderTextColor="grey"
+          />
+          <TouchableOpacity
+            onPress={this.onLogin.bind(this)}
+            style={styles.loginButton}
+          >
+            <Text style={styles.buttonText}>Log In</Text>
+          </TouchableOpacity>
+          <ActivityIndicator animating={this.state.showProgress == true} size="large" />
         </View>
-        {errorCtrl}
-        <TextInput
-          onChangeText={text => this.setState({ email: text })}
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="grey"
-        />
-        <TextInput
-          onChangeText={text => this.setState({ password: text })}
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry={true}
-          p
-          placeholderTextColor="grey"
-        />
-        <TouchableOpacity
-          onPress={this.onLogin.bind(this)}
-          style={styles.loginButton}
-        >
-          <Text style={styles.buttonText}>Log In</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={this.onRegister.bind(this)}
-          style={styles.registerButton}
-        >
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
-        <ActivityIndicator
-          animating={this.state.showProgress}
-          size="large"
-          style={styles.loader}
-        />
+        <View style={styles.bottomContainer}>
+          <View style={styles.listItem}>
+            <TouchableOpacity
+              onPress={this.onRegister.bind(this)}
+            >
+             <Text style={styles.listItemText}>Create Account</Text>
+            </TouchableOpacity>  
+            <TouchableOpacity
+              onPress={this.onRegister.bind(this)}
+            >
+             <Text style={styles.listItemTextR}>Forgot Password?</Text>
+            </TouchableOpacity>         
+          </View>
+        </View>
       </View>
     );
   }
@@ -124,7 +129,7 @@ export default class SigninIn extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-between",
     backgroundColor: "black"
   },
   heading: {
@@ -151,7 +156,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
     justifyContent: "center",
     marginLeft: 20,
-    marginRight: 20
+    marginRight: 20,
+    marginBottom: 30
   },
   registerButton: {
     height: 50,
@@ -177,5 +183,41 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 20,
     marginRight: 20
+  },
+  bottomContainer: {
+    backgroundColor: "black",
+    justifyContent: "flex-end",
+    marginBottom: 20
+  },
+  listItem: {
+    backgroundColor: "black",
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  listItemText: {
+    justifyContent: "flex-start",
+    color: "white",
+    fontSize: 20,
+    marginTop: 10,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10,
+    borderBottomColor: '#05c46b',
+    borderBottomWidth: 1.5
+  },
+  listItemTextR: {
+    color: "white",
+    fontSize: 20,
+    marginTop: 10,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10,
+    borderBottomColor: '#0fbcf9',
+    borderBottomWidth: 1.5
+  },
+  topContainer: {
+    flex: 1,
+    backgroundColor: "black",
+    justifyContent: "center"
   }
 });

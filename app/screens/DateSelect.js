@@ -11,6 +11,11 @@ import {
 } from "../store/actions/actionBundle";
 
 class DateSelect extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: (<View/>)
+    };
+  };
   render() {
     const select = (
       <View style={styles.container}>

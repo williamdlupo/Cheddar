@@ -11,7 +11,7 @@ export default (HomeStack = createStackNavigator(
         headerTitleStyle: {
           textAlign: "center",
           flex: 1,
-          fontSize: 25
+          fontSize: 25,
         },  
         headerStyle: {
           backgroundColor: "black"

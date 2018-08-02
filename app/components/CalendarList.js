@@ -93,6 +93,7 @@ class Calendar extends Component {
           ? this.props.onStoreSDate(day.dateString)
           : this.props.onStoreEDate(day.dateString);
       this.setState({ selected_date: day.dateString });
+      this.props.navigation.navigate("DateSelect", {key: "date_selected"})
       return dates;
     } catch (ex) {
       console.log("parsing failed", ex);

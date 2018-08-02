@@ -57,7 +57,7 @@ class Profile extends Component {
         <View style={styles.bottomContainer}>
           <TouchableOpacity
             style={styles.signOffButton}
-            onPress={() => this.Logout.bind(this)}
+            onPress={() => this.Logout()}
           >
             <Text style={styles.btnText}>Sign Out</Text>
           </TouchableOpacity>
