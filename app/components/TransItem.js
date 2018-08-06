@@ -15,7 +15,7 @@ const transItem = props => (
 const styles = StyleSheet.create({
   container: {
     margin: 5,
-    backgroundColor: "#1e272e",
+    backgroundColor: "#151b20",
   },
   listItem: {
     flex: 1,    
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     fontStyle: 'italic'
   },
   listItemTextRP: {
-    color: '#d2dae2',
-    // color: "#05c46b",
+    // color: '#d2dae2',
+    color: "#05c46b",
     fontSize: 18,
     marginTop: 10,
     marginLeft: 20,

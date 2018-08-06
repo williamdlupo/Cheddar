@@ -30,12 +30,6 @@ class Transactions extends Component {
   };
 
   render() {
-    const Acct =
-      this.props.account_id == "" ? (
-        <Text style={styles.heading}>All Accounts</Text>
-      ) : (
-        <Text style={styles.heading}>{this.props.account_id}</Text>
-      );
     const displayTransactions = (
       <View style={styles.topContainer}>
         <View style={styles.header}>
