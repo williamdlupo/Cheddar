@@ -97,7 +97,7 @@ export default class SigninIn extends Component {
         .then(user => {
           var uid = firebase.auth().currentUser.uid;
           fetch(
-            "https://dhwebhookentry.azurewebsites.net/api/CreateUser?code=DyjKssCI01YaGYSalJRvua9SuppbgJh/555HTUqD6NalucVievr4bA==",
+            "https://dhwebhookentry.azurewebsites.net/api/CreateUser",
             {
               method: "POST",
               headers: {
