@@ -72,7 +72,7 @@ class Calendar extends Component {
       const end_date = itemId == "end" ? day.dateString : this.props.end_date;
 
       let response = await fetch(
-        "https://projectsenti-api.azurewebsites.net/api/GetTransactions/trans/?code=KlaWFrSVQpxw6gLhFxYimImWoZZWNnpEH5CQ1QyWl2frnfjHUdyF2w==",
+        "https://projectsenti-api.azurewebsites.net/api/GetTransactions/trans/",
         {
           method: "POST",
           headers: {
