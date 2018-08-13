@@ -14,10 +14,10 @@ class PlaidLink extends Component {
     return (
       <PlaidAuthenticator
         onMessage={this.onMessage}
-        publicKey="f326b59ea06cf5309ebd2861388d13"
+        publicKey=""
         env="sandbox"
         product="transactions" 
-        webhook="https://projectsenti-webhook.azurewebsites.net/api/Webhook-Entry/entry/?code=jlrNiEIUt2IU8OyrDN060WVINIDhQcRDRLCIeky5Ol9Ro9WSMqf4fQ=="
+        webhook="https://projectsenti-webhook.azurewebsites.net/api/Webhook-Entry/entry/"
       />
     );
   }
@@ -34,7 +34,7 @@ class PlaidLink extends Component {
       });
       console.log(obj);
       await fetch(
-        "https://dhwebhookentry.azurewebsites.net/api/AddItem?code=KmecgKs5FLjCsmidGtoDomw976PhWkuJY6SpR2uN9eAfeMh3cgGhCg==",
+        "https://dhwebhookentry.azurewebsites.net/api/AddItem",
         {
           method: "POST",
           headers: {
@@ -57,7 +57,7 @@ class PlaidLink extends Component {
       let response = await fetch(
         "https://dhwebhookentry.azurewebsites.net/api/GetUserDocument/" +
           uid +
-          "?code=1zVI3irRXN7NVd88DX8Icg22nTgD3XJ/TyUP8NFEN8ipPW0VfFKTmA==",
+          "",
         {
           method: "POST"
         }
