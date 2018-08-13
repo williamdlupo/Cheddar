@@ -73,7 +73,7 @@ class App extends React.Component {
       let response = await fetch(
         "https://dhwebhookentry.azurewebsites.net/api/GetUserDocument/" +
           uid +
-          "?code=1zVI3irRXN7NVd88DX8Icg22nTgD3XJ/TyUP8NFEN8ipPW0VfFKTmA==",
+          "",
         {
           method: "POST"
         }
@@ -90,7 +90,7 @@ class App extends React.Component {
   async getTransactions() {
     try {
       let response = await fetch(
-        "https://projectsenti-api.azurewebsites.net/api/GetTransactions/trans/?code=KlaWFrSVQpxw6gLhFxYimImWoZZWNnpEH5CQ1QyWl2frnfjHUdyF2w==",
+        "https://projectsenti-api.azurewebsites.net/api/GetTransactions/trans/",
         {
           method: "POST",
           headers: {
